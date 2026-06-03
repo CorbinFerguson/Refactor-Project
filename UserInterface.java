@@ -4,46 +4,65 @@ import java.util.Objects;
 public class UserInterface {
     public int[] getDate(Scanner sc) {
         //Get date from user, return as int array of day, month, year. Return null if invalid input
+        
+        // Get year from user
         System.out.println("\nEnter the year you wish to search by (1985 - 2025): ");
         int year;
         try {
+            // Try to parse the input as an integer
             year = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
+            // Input not a valid integer, print error message and return null
             System.out.println("Invalid input. Please enter a positive integer.");
             return null;
         }
         if(year > 1984 && year < 2026) {
+            // Valid input, do nothing
+        }
+        else {
+            // Invalid input, print error message and return null
+            System.out.println("Improper entry");
+            return null;
+        }
 
-            System.out.println("\nEnter the month you wish to search by (1-12): ");
-            int month;
-            try {
-                month = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a positive integer.");
-                return null;
-            }
-            if(month < 13 && month > 0){
 
-                System.out.println("\nEnter the day you wish to search by (1-31): ");
-                int day;
-                try {
-                    day = Integer.parseInt(sc.nextLine());
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid input. Please enter a positive integer.");
-                    return null;
-                }
-                if(day < 32 && day > 0){
-                    int[] date = new int[]{day, month, year};
-                    return date;
-                }else {
-                    System.out.println("Improper entry");
-                    return null;
-                }
-            }else {
-                System.out.println("Improper entry");
-                return null;
-            }
+        // Get month from user
+        System.out.println("\nEnter the month you wish to search by (1-12): ");
+        int month;
+        try {
+            // Try to parse the input as an integer
+            month = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            // Input not a valid integer, print error message and return null
+            System.out.println("Invalid input. Please enter a positive integer.");
+            return null;
+        }
+        if(month < 13 && month > 0){
+            // Valid input, do nothing
         }else {
+            // Invalid input, print error message and return null
+            System.out.println("Improper entry");
+            return null;
+        }
+
+
+        // Get day from user
+        System.out.println("\nEnter the day you wish to search by (1-31): ");
+        int day;
+        try {
+            // Try to parse the input as an integer
+            day = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            // Input not a valid integer, print error message and return null
+            System.out.println("Invalid input. Please enter a positive integer.");
+            return null;
+        }
+        if(day < 32 && day > 0){
+            // Valid input, return the date as an int array
+            int[] date = new int[]{day, month, year};
+            return date;
+        }else {
+            // Invalid input, print error message and return null
             System.out.println("Improper entry");
             return null;
         }
