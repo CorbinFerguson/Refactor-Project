@@ -1,0 +1,7 @@
+#1. Imagine you are working for a tornado spotter who has records for tornados that occurred during the past 40 years.
+
+Each record includes a date, location, and strength.
+
+Design and specify an ADT for this collection of data.
+
+You may work with a partner.
