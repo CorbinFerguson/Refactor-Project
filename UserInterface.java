@@ -98,6 +98,13 @@ public class UserInterface {
     }
 
     public void printByLocation(Scanner sc, SortedList sortedList) {
+        // Ask for location
+        System.out.println("Enter the Location of the Tornadoes you wish to print: ");
+        
+        // Get answer
+        String location = getString(sc);
 
+        // Print tornadoes of that location
+        sortedList.printLocation(location);
     }
 }

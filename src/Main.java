@@ -96,7 +96,7 @@ public class Main {
                 }
 
                 case "Print All": {
-                    sortedList.printAll();
+                    userInterface.printAll(sortedList);
                     break;
                 }
                 case "Print by Date":{
@@ -104,7 +104,7 @@ public class Main {
                     break;
                 }
                 case "Print by Strength":{
-                    System.out.println("Entre the Strength of the Tornadoes you wish to print: ");
+                    System.out.println("Enter the Strength of the Tornadoes you wish to print: ");
                     int strength;
                     try {
                         strength = Integer.parseInt(sc.nextLine());
@@ -121,9 +121,7 @@ public class Main {
                     break;
                 }
                 case "Print by Location": {
-                    System.out.println("Entre the Location of the Tornadoes you wish to print: ");
-                    test = sc.nextLine();
-                    sortedList.printLocation(test);
+                    userInterface.printByLocation(sc, sortedList);
                     break;
                 }
                 case "Exit":{
