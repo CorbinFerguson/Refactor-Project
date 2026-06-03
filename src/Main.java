@@ -7,13 +7,14 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
         boolean l = true;
         SortedList sortedList = new SortedList();
         String test;
+        UserInterface userInterface = new UserInterface();
 
         //test Tornadoes
         sortedList.recordTornado(2, 2, 2000, "Flint", 4);
@@ -99,45 +100,7 @@ public class Main {
                     break;
                 }
                 case "Print by Date":{
-                    System.out.println("\nEnter the year you wish to search by (1985 - 2025): ");
-                    int year;
-                    try {
-                        year = Integer.parseInt(sc.nextLine());
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid input. Please enter a positive integer.");
-                        continue;
-                    }
-                    if(year > 1984 && year < 2026) {
-
-                        System.out.println("\nEnter the month you wish to search by (1-12): ");
-                        int month;
-                        try {
-                            month = Integer.parseInt(sc.nextLine());
-                        } catch (NumberFormatException e) {
-                            System.out.println("Invalid input. Please enter a positive integer.");
-                            continue;
-                        }
-                        if(month < 13 && month > 0){
-
-                            System.out.println("\nEnter the day you wish to search by (1-31): ");
-                            int day;
-                            try {
-                                day = Integer.parseInt(sc.nextLine());
-                            } catch (NumberFormatException e) {
-                                System.out.println("Invalid input. Please enter a positive integer.");
-                                continue;
-                            }
-                            if(day < 32 && day > 0){
-                                    sortedList.printDate(day, month, year);
-                            }else {
-                                System.out.println("Improper entry");
-                            }
-                        }else {
-                            System.out.println("Improper entry");
-                        }
-                    }else {
-                        System.out.println("Improper entry");
-                    }
+                    userInterface.printByDate(sc, sortedList);
                     break;
                 }
                 case "Print by Strength":{
