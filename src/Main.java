@@ -3,7 +3,6 @@
     by Zellar and Jitin Ponnam
  */
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {

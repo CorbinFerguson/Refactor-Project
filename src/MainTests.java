@@ -1,4 +1,4 @@
-import junit.Test;
+import org.junit.Test;
 
 public class MainTests {
     
@@ -6,4 +6,26 @@ public class MainTests {
     public void testrecordTornadoDetails() {
         	
     }
+
+    @Test
+    public void testprintAll() {
+        
+    }
+
+    @Test
+    public void testprintByDate() {
+        
+    }
+
+    @Test
+    public void testprintByStrength() {
+        
+    }
+
+    @Test
+    public void testprintByLocation() {
+        
+    }
+
+    
 }
