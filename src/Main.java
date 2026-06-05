@@ -11,9 +11,8 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        boolean l = true;
+        boolean loop = true;
         SortedList sortedList = new SortedList();
-        String test;
         UserInterface userInterface = new UserInterface();
 
         //test Tornadoes
@@ -21,7 +20,7 @@ public class Main {
         sortedList.recordTornado(2, 2, 2000, "Flint", 4);
         sortedList.recordTornado(2, 3, 2000, "Moon", 3);
 
-        while (l) {
+        while (loop) {
             // Display the main menu and prompt the user for a command
             System.out.println("\nWelcome to Tornado Recorder");
             System.out.println("Choose a command from the list: ");
@@ -52,7 +51,7 @@ public class Main {
                     break;
                 }
                 case "Exit":{
-                    l = false;
+                    loop = false;
                     break;
                 }
                 default:{
