@@ -104,20 +104,7 @@ public class Main {
                     break;
                 }
                 case "Print by Strength":{
-                    System.out.println("Enter the Strength of the Tornadoes you wish to print: ");
-                    int strength;
-                    try {
-                        strength = Integer.parseInt(sc.nextLine());
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid input. Please enter a positive integer.");
-                        continue;
-                    }
-                    if(strength > 0 && strength < 6) {
-                        sortedList.printStrength(strength);
-                        break;
-                    }else{
-                        System.out.println("Invalid input. Enter a integer 1-5.");
-                    }
+                    userInterface.printByStrength(sc, sortedList);
                     break;
                 }
                 case "Print by Location": {

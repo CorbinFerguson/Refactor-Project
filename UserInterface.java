@@ -74,8 +74,28 @@ public class UserInterface {
     }
 
     public int getStrength(Scanner sc) {
-        // temp for compiling TODO
-        return -1;
+        // Get strength from user
+        System.out.println("Enter the Strength of the Tornadoes you wish to print: ");
+        int strength;
+
+        // Try to parse the input as an integer
+        try {
+            strength = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            // Input not a valid integer, print error message and return invalid response
+            System.out.println("Invalid input. Please enter a positive integer.");
+            return -1;
+        }
+
+        // Check if the strength is valid
+        if(strength > 0 && strength < 6) {
+            // Valid input, return the strength
+            return strength;
+        }else{
+            // Invalid input, print error message and return invalid response
+            System.out.println("Invalid input. Enter a integer 1-5.");
+            return -1;
+        }
     }
 
     public void insertRecord(Scanner sc) {
@@ -87,21 +107,32 @@ public class UserInterface {
     }
 
     public void printByDate(Scanner sc, SortedList sortedList) {
+        // Get the date
         int[] date = getDate(sc);
+        
+        // If found
         if (date != null) {
+            // Print tornadoes of that date
             sortedList.printDate(date[0], date[1], date[2]);
         }
     }
 
     public void printByStrength(Scanner sc, SortedList sortedList) {
-
+        // Get the strength
+        int strength = getStrength(sc);
+        
+        // If found
+        if (strength != -1) {
+            // Print tornadoes of that strength
+            sortedList.printStrength(strength);
+        }
     }
 
     public void printByLocation(Scanner sc, SortedList sortedList) {
         // Ask for location
         System.out.println("Enter the Location of the Tornadoes you wish to print: ");
         
-        // Get answer
+        // Get answer (will always get something)
         String location = getString(sc);
 
         // Print tornadoes of that location
