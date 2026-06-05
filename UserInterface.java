@@ -2,12 +2,18 @@ import java.util.Scanner;
 import java.util.Objects;
 
 public class UserInterface {
-    public int[] getDate(Scanner sc) {
+    public int[] getDate(Scanner sc, boolean fromPrint) {
         //Get date from user, return as int array of day, month, year. Return null if invalid input
         
-        // Get year from user
-        System.out.println("\nEnter the year you wish to search by (1985 - 2025): ");
+        // Prompt user for year (different prompt if from printing or from recording)
+        if (fromPrint) {
+            System.out.println("\nEnter the year you wish to search by (1985 - 2025): ");
+        } else {
+            System.out.println("\nEnter the year it occurred (1985 - 2025): ");
+        }
         int year;
+        
+        // Get year from user
         try {
             // Try to parse the input as an integer
             year = Integer.parseInt(sc.nextLine());
@@ -26,9 +32,15 @@ public class UserInterface {
         }
 
 
-        // Get month from user
-        System.out.println("\nEnter the month you wish to search by (1-12): ");
+        // Prompt user for month (different prompt if from printing or from recording)
+        if (fromPrint) {
+            System.out.println("\nEnter the month you wish to search by (1-12): ");
+        } else {
+            System.out.println("\nEnter the month it occurred (1-12): ");
+        }
         int month;
+        
+        // Get month from user
         try {
             // Try to parse the input as an integer
             month = Integer.parseInt(sc.nextLine());
@@ -46,9 +58,15 @@ public class UserInterface {
         }
 
 
-        // Get day from user
-        System.out.println("\nEnter the day you wish to search by (1-31): ");
+        // Prompt user for day (different prompt if from printing or from recording)
+        if (fromPrint) {
+            System.out.println("\nEnter the day you wish to search by (1-31): ");
+        } else {
+            System.out.println("\nEnter the day it occurred (1-31): ");
+        }
         int day;
+
+        // Get day from user
         try {
             // Try to parse the input as an integer
             day = Integer.parseInt(sc.nextLine());
@@ -73,13 +91,18 @@ public class UserInterface {
         return sc.nextLine();
     }
 
-    public int getStrength(Scanner sc) {
-        // Get strength from user
-        System.out.println("Enter the Strength of the Tornadoes you wish to print: ");
+    public int getStrength(Scanner sc, boolean fromPrint) {
+        // prompt user for strength (different prompt if from printing or from recording)
+        if (fromPrint) {
+            System.out.println("Enter the Strength of the Tornadoes you wish to print: ");
+        } else {
+            System.out.println("\nEnter the Strength of the Tornado (1-5): ");
+        }
         int strength;
 
-        // Try to parse the input as an integer
+        // Get strength from user
         try {
+            // Try to parse the input as an integer
             strength = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
             // Input not a valid integer, print error message and return invalid response
@@ -92,14 +115,57 @@ public class UserInterface {
             // Valid input, return the strength
             return strength;
         }else{
-            // Invalid input, print error message and return invalid response
-            System.out.println("Invalid input. Enter a integer 1-5.");
+            // Invalid input, print error message (different message if from printing or from recording)
+            if (fromPrint) {
+                System.out.println("Invalid input. Enter a integer 1-5.");
+            } else {
+                System.out.println("Improper entry");
+            }
+
+            // Return invalid response
             return -1;
         }
     }
 
-    public void insertRecord(Scanner sc) {
+    public void insertRecord(Scanner sc, SortedList sortedList) {
+        // Allow the user to add a tornado to the records
+        
+        // Loop till user wants to stop adding tornadoes
+        while (true) {
+            // Get tornado information
+            
+            // Location/exit command
+            // Get location or exit command
+            System.out.println("\nEnter the Location in which the tornado occurred then press 'enter', type 'back' to leave: ");
+            String location = getString(sc);
+            
+            // check location for exit condition
+            if (Objects.equals(location, "back")) {
+                break;
+            }
 
+            //Date
+            // Get the date
+            int[] date = getDate(sc, false);
+
+            // If date is invalid, skip rest of loop and start over
+            if (date == null) {
+                continue;
+            }
+
+            // Strength
+            // Get the strength
+            int strength = getStrength(sc, false);
+            
+            // If invalid strength, skip rest of loop and start over
+            if(strength == -1){
+                continue;
+            }
+            
+            // If all input is valid, record the tornado
+            sortedList.recordTornado(date[0], date[1], date[2], location, strength);
+            System.out.println("Tornado recorded.");
+        }
     }
 
     public void printAll(SortedList sortedList) {
@@ -108,7 +174,7 @@ public class UserInterface {
 
     public void printByDate(Scanner sc, SortedList sortedList) {
         // Get the date
-        int[] date = getDate(sc);
+        int[] date = getDate(sc, true);
         
         // If found
         if (date != null) {
@@ -119,7 +185,7 @@ public class UserInterface {
 
     public void printByStrength(Scanner sc, SortedList sortedList) {
         // Get the strength
-        int strength = getStrength(sc);
+        int strength = getStrength(sc, true);
         
         // If found
         if (strength != -1) {

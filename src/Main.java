@@ -27,71 +27,11 @@ public class Main {
             System.out.println("Choose a command from the list: ");
             System.out.println("Record a Tornado, Print All, Print by Date, Print by Strength, Print by Location, Exit");
             String command = sc.nextLine();
+            
+            //Process the command
             switch (command) {
                 case "Record a Tornado": {
-                    // Allow the user to add a plane to the air queue
-                    while (true) {
-                        System.out.println("\nEnter the Location in which the tornado occurred then press 'enter', type 'back' to leave: ");
-                        String location = sc.nextLine();
-                        if (Objects.equals(location, "back")) {
-                            break;
-                        } else {
-                            System.out.println("\nEnter the year it occurred (1985 - 2025): ");
-                            int year;
-                            try {
-                                year = Integer.parseInt(sc.nextLine());
-                            } catch (NumberFormatException e) {
-                                System.out.println("Invalid input. Please enter a positive integer.");
-                                continue;
-                            }
-                            if(year > 1984 && year < 2026) {
-
-                                System.out.println("\nEnter the month it occurred (1-12): ");
-                                int month;
-                                try {
-                                    month = Integer.parseInt(sc.nextLine());
-                                } catch (NumberFormatException e) {
-                                    System.out.println("Invalid input. Please enter a positive integer.");
-                                    continue;
-                                }
-                                if(month < 13 && month > 0){
-
-                                    System.out.println("\nEnter the day it occurred (1-31): ");
-                                    int day;
-                                    try {
-                                        day = Integer.parseInt(sc.nextLine());
-                                    } catch (NumberFormatException e) {
-                                        System.out.println("Invalid input. Please enter a positive integer.");
-                                        continue;
-                                    }
-                                    if(day < 32 && day > 0){
-
-                                        System.out.println("\nEnter the Strength of the Tornado (1-5): ");
-                                        int strength;
-                                        try {
-                                            strength = Integer.parseInt(sc.nextLine());
-                                        } catch (NumberFormatException e) {
-                                            System.out.println("Invalid input. Please enter a positive integer.");
-                                            continue;
-                                        }
-                                        if(strength > 0 && strength < 6){
-
-                                            sortedList.recordTornado(day, month, year, location, strength);
-                                            System.out.println("Tornado recorded.");
-                                        }else {
-                                            System.out.println("Improper entry");
-                                        }
-                                    }else {
-                                        System.out.println("Improper entry");
-                                    }
-                                }else {
-                                    System.out.println("Improper entry");
-                                }
-                            }else {
-                                System.out.println("Improper entry");
-                            }
-                        }
-                    }
+                    userInterface.insertRecord(sc, sortedList);
                     break;
                 }
 
